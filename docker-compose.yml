@@ -1,11 +1,19 @@
-db:
+version: '3'
 
-web:
-  build: .
-  command: sudo docker build -t webapp-mysql .
-  volumes:
-      - .:/var/lib/mysql
-  ports:
-    - 8080:8080
-  links:
-    - db
+services:
+
+  client:
+    build: ./client        
+    ports:
+     - "8080:8080"
+    volumes:
+      - .:/app  
+
+  server:
+      build: ./server
+      ports:
+      - "3000:3000"
+      volumes:
+        - .:/usr/src/app
+
+  

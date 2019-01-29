@@ -1,5 +1,5 @@
 # Use Node v8 as the base image.
-FROM node:alpine
+FROM node:10
 
 # create and set app directory
 RUN mkdir -p /usr/src/app
@@ -16,3 +16,4 @@ COPY . .
 
 # Run app
 CMD ["npm", "start"]
+
