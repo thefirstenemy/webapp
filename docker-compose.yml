@@ -1,19 +1,18 @@
-version: '3'
+version: "2"
 
 services:
+    server:
+        build: ./server/.
+        ports:
+          - 3000:3000
 
-  client:
-    build: ./client        
-    ports:
-     - "8080:8080"
-    volumes:
-      - .:/app  
-
-  server:
-      build: ./server
-      ports:
-      - "3000:3000"
-      volumes:
-        - .:/usr/src/app
+    client:
+        build: ./client/.
+        ports:
+          - 8080:8080
+        depends_on:
+            - server
+        links:
+            - server
 
   

@@ -14,6 +14,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+RUN npm rebuild bcrypt --build-from-source
+
+EXPOSE 3000
 # Run app
 CMD ["npm", "start"]
 
